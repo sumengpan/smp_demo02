@@ -1,5 +1,6 @@
 package com.smp.smp_demo02.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.smp.smp_demo02.domain.Result;
 import com.smp.smp_demo02.domain.Student;
@@ -12,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -25,14 +25,14 @@ public class StudentController extends BaseController{
     @RequestMapping(path="/toList",method = {RequestMethod.GET})
     public String toList(ModelMap modelMap, @RequestParam(defaultValue = "1") int curr, @RequestParam(defaultValue = "10")int pageSize){
         //调查询分页列表的方法
+        /*PageHelper.startPage(curr,pageSize);
+        PageInfo<Student> pi = service.findByPage(curr, pageSize);
+        //request.setAttribute("pi",pi);
+        modelMap.addAttribute("pi",pi);
+        return "/student/student-list";*/
         PageInfo<Student> pi=service.findByPage(curr,pageSize);
-        //将pi到页面
         request.setAttribute("pi",pi);
-
-        modelMap.addAttribute("list",list);
-        System.out.println((list + "这是student信息"));
         return "/student/student-list";
-        //在application.properties里面配置了跳转/Web-INF/pages/user-list.jsp
     }
 
     //删除
@@ -50,7 +50,7 @@ public class StudentController extends BaseController{
     @RequestMapping(path="/toAdd",method ={ RequestMethod.GET, RequestMethod.POST})
     public String toAdd(){
         //页面上有一个下拉菜单，需要查询所有的部门
-        List<Student> students= service.findAllStudents(getLoginSid());
+        List<Student> students= service.findAll();
         //添加到request
         request.setAttribute("students",students);
         return "/student/student-add";
@@ -75,7 +75,7 @@ public class StudentController extends BaseController{
         l.info("toUpdate student="+student);
         request.setAttribute("student",student);
         //页面上有一个下拉菜单 ，需要查询所有的部门
-        List<Student> students = service.findAllStudents(getLoginSid());
+        List<Student> students = service.findAll();
         //添加到request
         request.setAttribute("students",students);
         return "/student/student-update";

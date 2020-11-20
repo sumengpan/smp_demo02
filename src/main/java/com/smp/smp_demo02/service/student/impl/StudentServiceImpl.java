@@ -22,7 +22,7 @@ public class StudentServiceImpl implements StudentService {
         //设置参数
         PageHelper.startPage(curr,pageSize);
         //调用全查
-
+         List<Student> list=  dao.findAll();
         //包装成pageInfo
         PageInfo<Student> pi = new PageInfo<>(list);
         return pi;
@@ -50,8 +50,9 @@ public class StudentServiceImpl implements StudentService {
     }
     //根据id查找
     @Override
-    public List<Student> findAllStudents(int sid) {
-        return dao.findAll(sid);
+    public List<Student> findAll() {
+       List<Student> list =dao.findAll();
+       return list;
     }
 
 }

@@ -6,8 +6,8 @@ import com.smp.smp_demo02.domain.Student;
 import java.util.List;
 
 public interface StudentDao {
-    //查找所有
-    List<StudentDao> findAllStudent();
+    //全查
+    List<Student> findAll();
     //增加学生
     void saveStudent(Student student);
 
@@ -17,6 +17,5 @@ public interface StudentDao {
     void updateStudent(Student student);
     //删除
     void deleteStudent(int sid);
-    //根据学号查找
-    List<Student> findAll(int sid);
+
 }

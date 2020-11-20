@@ -1,5 +1,6 @@
 package com.smp.smp_demo02.service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.smp.smp_demo02.domain.Student;
 import com.smp.smp_demo02.service.student.StudentService;
@@ -23,7 +24,11 @@ public class StudentServiceTest {
         //分页列表
         //页面上显示分页列表，就要求业务方法中提供查询PageInfo的方法
         //String sgradeId = "3";
-        PageInfo<Student> pi = service.findByPage(1, 3);
+
+        PageHelper.startPage(1,3);
+        List<Student> list=service.findAll();
+        PageInfo<Student> pi=new PageInfo<>(list);
+
         l.info("pi = " + pi);
     }
     @Test
@@ -69,7 +74,7 @@ public class StudentServiceTest {
     @Test
     public void test05(){
         int sid = 1;
-        List<Student> list = service.findAllStudents(sid);
+        List<Student> list = service.findAll();
         l.info("list = " + list);
     }
 }

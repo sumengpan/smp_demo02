@@ -18,8 +18,8 @@
         <result column="sstate" property="sstate"/>
     </resultMap>
     
-    <!--List<StudentDao> findAllStudent();-->
-    <select id="findAllStudent" resultMap="studentMap">
+    <!--List<Student> findAll();-->
+    <select id="findAll" resultMap="studentMap">
         select * from stu
     </select>
 
@@ -83,9 +83,4 @@
     <delete id="deleteStudent" parameterType="string">
         delete from stu where sid=#{sid}
     </delete>
-    <!--//根据学号查找
-    List<StudentDao> findAll(int sid);-->
-    <select id="findAll" parameterType="int" resultMap="studentMap">
-        select * from stu where sid=#{sid}
-    </select>
 </mapper>

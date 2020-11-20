@@ -14,17 +14,17 @@ public class StudentDaoTest {
     //查找所有的学生
     @Test
     void test01() {
-        //System.out.println(dao.findAllStudent());
+        //System.out.println(dao.findAll());
         System.out.println(dao);
-        List<StudentDao> list=dao.findAllStudent();
+        List<Student> list=dao.findAll();
         System.out.println(list);
     }
     //增加学生
     @Test
     void test02(){
         Student student=new Student();
-        student.setSid(2017340106);
-        student.setSname("张三");
+        student.setSid(2017340107);
+        student.setSname("李四");
         student.setSpassword("123456");
         student.setSsex("男");
         student.setSage("22");
@@ -54,4 +54,5 @@ public class StudentDaoTest {
         //删除
         dao.deleteStudent(Integer.parseInt(sid));
     }
+
 }

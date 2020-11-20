@@ -18,5 +18,5 @@ public interface StudentService {
 
     boolean deleteStudent(int sid);
 
-    List<Student> findAllStudents(int sid);
+    List<Student> findAll();
 }

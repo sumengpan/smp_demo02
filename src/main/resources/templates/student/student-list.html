@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>学生管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
+<script>
+    function deleteById() {
+        var id = getCheckId()
+        if(id) {
+            if(confirm("你确认要删除此条记录吗？")) {
+                //使用ajax请求
+                var url= '/student/delete.do?sid='+id;
+                var fn = function(result){ //{code:200,msg:'删除成功',data:null}
+                    //弹出提示
+                    alert(result.msg)
+                    window.location.reload() //重新加载
+                }
+                $.get(url,fn,'json')
+            }
+        }else{
+            alert("请勾选待处理的记录，且每次只能勾选一个")
+        }
+    }
+</script>
 <body>
 <h1>学生管理</h1>
 <!--正文内容-->
+<div>
+    <button type="button" title="新增" onclick='location.href="/student/toAdd"'>新增</button>
 <table border="1px" width="100%">
     <tr>
         <td>学号</td>
@@ -19,22 +41,24 @@
         <td>邮箱</td>
         <td>操作</td>
     </tr>
-    <!--/*@thymesVar id="list" type="com.smp.smp_demo02.domain.Student"*/-->
- <!--   <tr th:each="student:${list}">
-        <td th:value="${student.getSid()}"></td>
-        <td th:value="${student.getSname()}"></td>
-        <td th:value="${student.getSpassword()}"></td>
-        <td th:value="${student.getSsex()}"></td>
-        <td th:value="${student.getSgradeId()}"></td>
-        <td th:value="${student.getSdeptId()}"></td>
-        <td th:value="${student.getSphone()}"></td>
-        <td th:value="${student.getSemail()}"></td>
+    <!--/*@thymesVar id="student" type="com.smp.smp_demo02.domain.Student"*/-->
+    <tr th:each="student,list: ${pi.list}">
+        <td th:text="${student.sid}"></td>
+        <td th:text="${student.sname}"></td>
+        <td th:text="${student.spassword}"></td>
+        <td th:text="${student.ssex}"></td>
+        <td th:text="${student.sgradeId}"></td>
+        <td th:text="${student.sdeptId}"></td>
+        <td th:text="${student.sphone}"></td>
+        <td th:text="${student.semail}"></td>
         <td>
-        <a href="/student/toUpdate.do?sid=${item.sid}">编辑</a>|<a href="/student/delete">删除</a>
+            <a href="/student/toUpdate.do?sid=${sid}">编辑</a>|
+            <button title="删除" onclick="deleteById()">删除</button>
+            <!--<a href="/student/delete">删除</a>-->
         </td>
-    </tr>-->
-    <p th:text="${list}">moren</p>
-    <button type="button" title="新增" onclick='location.href="/student/toAdd"'>新建</button>
+    </tr>
 </table>
+</div>
+<!--<div th:include="../templates/common/page :: page"/>-->
 </body>
 </html>

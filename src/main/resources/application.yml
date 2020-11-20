@@ -6,6 +6,16 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/smp_demo01?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+  thymeleaf:
+    cache: true #开启模板缓存
+    check-template: true #
+    check-template-location: true #检查模板位置是否正确
+    content-type: text/html
+    enabled: true #开启mvc解析器
+    encoding: UTF-8 #编码
+    mode: HTML5
+    prefix: classpath:/templates/ #前缀
+    suffix: .html #后缀
 
 mybatis:
   type-aliases-package: com.smp.smp_demo02.domain
