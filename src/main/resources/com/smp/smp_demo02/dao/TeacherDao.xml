@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--namespace: 需要映射的Dao接口类型-->
+<mapper namespace="com.smp.smp_demo02.dao.TeacherDao">
+    <resultMap id="teacherMap" type="teacher">
+        <id column="tid" property="tid"/>
+        <result column="tpassword" property="tpassword"/>
+        <result column="tname" property="tname"/>
+        <result column="tsex" property="tsex"/>
+        <result column="tdept_id" property="tdeptId"/>
+        <result column="tphone" property="tphone"/>
+        <result column="temail" property="temail"/>
+        <result column="tstate" property="tstate"/>
+    </resultMap>
+
+    <!--List<TeacherDao> findAllTeacher();-->
+    <select id="findAllTeacher" resultMap="teacherMap">
+        select * from tea
+    </select>
+
+    <!--//增加
+    void saveTeacher(Teacher teacher);-->
+    <insert id="saveTeacher" parameterType="teacher">
+        insert into tea (
+            tid       ,
+            tname     ,
+            tpassword ,
+            tsex      ,
+            tdept_id  ,
+            tphone    ,
+            temail    ,
+            tstate
+            )
+            values(
+            #{tid       },
+            #{tname     },
+            #{tpassword },
+            #{tsex      },
+            #{tdeptId  },
+            #{tphone    },
+            #{temail    },
+            #{tstate    }
+            )
+    </insert>
+    <!--//保存修改，根据id
+    Teacher findByTid(int tid); -->
+    <select id="findByTid" parameterType="int" resultMap="teacherMap">
+        select * from tea where tid=#{tid}
+    </select>
+
+    <!--//修改
+    void updateTeacher(Teacher teacher);    -->
+    <update id="updateTeacher" parameterType="teacher">
+        update tea set
+            tname     = #{tname     },
+            tpassword = #{tpassword },
+            tsex      = #{tsex      },
+            tdept_id  = #{tdeptId   },
+            tphone    = #{tphone    },
+            temail    = #{temail    },
+            tstate    = #{tstate    }
+        where tid =#{tid}
+    </update>
+    <!--//删除
+    void deleteTeacher(int tid);-->
+    <delete id="deleteTeacher" parameterType="int">
+        delete from tea where tid=#{tid}
+    </delete>
+
+    <!--//根据学号查找
+    List<Teacher> findAll(int tid);-->
+    <select id="findAll" parameterType="int" resultMap="teacherMap">
+        select * from tea where tid=#{tid}
+    </select>
+</mapper>

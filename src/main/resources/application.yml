@@ -1,0 +1,21 @@
+server:
+  port: 8080 #端口号
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/smp_demo01?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+
+mybatis:
+  type-aliases-package: com.smp.smp_demo02.domain
+  mapper-locations: classpath:com.smp.smp_demo02.dao/*.xml
+  #使用注解在启动类上面配置 @MapperScan("com.smp.smp_demo02.dao")//存放接口
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # mybatis日志
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

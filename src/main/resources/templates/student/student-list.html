@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+</head>
+<body>
+<h1>学生管理</h1>
+<!--正文内容-->
+<table border="1px" width="100%">
+    <tr>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>密码</td>
+        <td>性别</td>
+        <td>班级</td>
+        <td>年级</td>
+        <td>电话</td>
+        <td>邮箱</td>
+        <td>操作</td>
+    </tr>
+    <!--/*@thymesVar id="list" type="com.smp.smp_demo02.domain.Student"*/-->
+ <!--   <tr th:each="student:${list}">
+        <td th:value="${student.getSid()}"></td>
+        <td th:value="${student.getSname()}"></td>
+        <td th:value="${student.getSpassword()}"></td>
+        <td th:value="${student.getSsex()}"></td>
+        <td th:value="${student.getSgradeId()}"></td>
+        <td th:value="${student.getSdeptId()}"></td>
+        <td th:value="${student.getSphone()}"></td>
+        <td th:value="${student.getSemail()}"></td>
+        <td>
+        <a href="/student/toUpdate.do?sid=${item.sid}">编辑</a>|<a href="/student/delete">删除</a>
+        </td>
+    </tr>-->
+    <p th:text="${list}">moren</p>
+    <button type="button" title="新增" onclick='location.href="/student/toAdd"'>新建</button>
+</table>
+</body>
+</html>
