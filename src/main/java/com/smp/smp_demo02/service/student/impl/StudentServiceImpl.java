@@ -16,43 +16,31 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     private Logger l= LoggerFactory.getLogger(this.getClass());
     @Autowired
-    StudentDao dao;
+    StudentDao studentDao;
     @Override
-    public PageInfo<Student> findByPage(int curr, int pageSize) {
-        //设置参数
-        PageHelper.startPage(curr,pageSize);
-        //调用全查
-         List<Student> list=  dao.findAll();
-        //包装成pageInfo
-        PageInfo<Student> pi = new PageInfo<>(list);
-        return pi;
+    public List<Student> findAll() {
+        return studentDao.findAll();
+    }
+    //查找修改
+    @Override
+    public Student findStudentById(int sid) {
+        return studentDao.findBySid(sid);
     }
     //添加
     @Override
     public void saveStudent(Student student) {
-        dao.saveStudent(student);
-    }
-    //查找修改
-    @Override
-    public Student findStudentById(String sid) {
-        return dao.findBySid(sid);
+        studentDao.saveStudent(student);
     }
     //修改
     @Override
     public void updateStudent(Student student) {
-        dao.updateStudent(student);
+        studentDao.updateStudent(student);
     }
     //删除
     @Override
-    public boolean deleteStudent(int sid) {
-        dao.deleteStudent(sid);
-        return true;
+    public void deleteStudent(int sid) {
+        studentDao.deleteStudent(sid);
     }
-    //根据id查找
-    @Override
-    public List<Student> findAll() {
-       List<Student> list =dao.findAll();
-       return list;
-    }
+
 
 }

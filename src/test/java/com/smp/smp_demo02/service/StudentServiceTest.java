@@ -53,7 +53,7 @@ public class StudentServiceTest {
     public void test03() {
         //
         //更新业务  先根据id查找出对应的一条记录，编辑它的值，再将记录保存到数据库中
-        String sid = "2017340101";
+        int sid = 2017340101;
         Student student = service.findStudentById(sid);
         l.info("student=" + student);
         //修改

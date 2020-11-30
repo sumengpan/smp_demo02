@@ -39,7 +39,7 @@ public class StudentDaoTest {
     //更新业务  先根据id查找出对应的一条记录，编辑它的值，再将记录保存到数据库中
     @Test
     public void test03() {
-        String sid = "2017340106";
+        int sid = 2017340120;
         Student student=dao.findBySid(sid);
         //修改
         student.setSbirthday("1998-11-11");
@@ -50,9 +50,9 @@ public class StudentDaoTest {
     //删除业务，就是根据指定的id，删除数据库中的记录
     @Test
     public void test04() {
-        String sid = "000";
+        int sid = 000;
         //删除
-        dao.deleteStudent(Integer.parseInt(sid));
+        dao.deleteStudent(sid);
     }
 
 }

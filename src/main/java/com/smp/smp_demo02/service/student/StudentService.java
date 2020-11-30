@@ -6,17 +6,15 @@ import com.smp.smp_demo02.domain.Student;
 import java.util.List;
 
 public interface StudentService {
-    //分页列表显示
-    PageInfo<Student> findByPage(int curr, int pageSize);
 
     //增加
     void saveStudent(Student student);
     //查找修改
-    Student findStudentById(String sid);
+    Student findStudentById(int sid);
 
     void updateStudent(Student student);
 
-    boolean deleteStudent(int sid);
+    void deleteStudent(int sid);
 
     List<Student> findAll();
 }

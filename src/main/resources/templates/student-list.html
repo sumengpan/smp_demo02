@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理</title>
+    <script src="js/vuejs-2.5.16.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-if="viewid==1">
+        <button @click="showSaveForm()">新建</button>
+        <table border="1px" width="100%">
+            <tr>
+                <td>序号</td>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>密码</td>
+                <td>性别</td>
+                <td>班级</td>
+                <td>年级</td>
+                <td>电话</td>
+                <td>邮箱</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="(student,index) in students">
+                <td>{{index+1}}</td>
+                <td>{{student.sid}}</td>
+                <td>{{student.sname}}</td>
+                <td>{{student.spassword}}</td>
+                <td>{{student.ssex}}</td>
+                <td>{{student.sgradeId}}</td>
+                <td>{{student.sdeptId}}</td>
+                <td>{{student.sphone}}</td>
+                <td>{{student.semail}}</td>
+                <td>
+                    <button @click="deleteStudent(student.sid)">删除</button>
+                    <button @click="findOne(student.sid)">编辑</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div v-if="viewid!=1">
+        <form>
+            <input type="hidden" v-model="student.sid">
+            学号:<input type="text" v-model="student.sid"><br/>
+            姓名:<input type="text" v-model="student.sname"><br/>
+            密码:<input type="text" v-model="student.spassword"><br/>
+            性别:<input type="text" v-model="student.ssex"><br/>
+            班级:<input type="text" v-model="student.sgradeId"><br/>
+            年级:<input type="text" v-model="student.sdeptId"><br/>
+            电话:<input type="text" v-model="student.sphone"><br/>
+            邮箱:<input type="text" v-model="student.semail"><br/>
+            <button @click="back">返回</button>
+            <button v-if="viewid == 2" @click="saveStudent()">保存</button>
+            <button v-if="viewid == 3" @click="updateStudent(student.sid)">修改</button>
+        </form>
+    </div>
+</div>
+</body>
+<script src="js/module-student.js"></script>
+<!--<body>
+<h1>学生管理</h1>
+&lt;!&ndash;正文内容&ndash;&gt;
+<div>
+    <button type="button" title="新增" onclick='location.href="/student/toAdd"'>新增</button>
+<table border="1px" width="100%">
+    <tr>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>密码</td>
+        <td>性别</td>
+        <td>班级</td>
+        <td>年级</td>
+        <td>电话</td>
+        <td>邮箱</td>
+        <td>操作</td>
+    </tr>
+    &lt;!&ndash;/*@thymesVar id="student" type="com.smp.smp_demo02.domain.Student"*/&ndash;&gt;
+    <tr th:each="student,list: ${pi.list}">
+        <td th:text="${student.sid}"></td>
+        <td th:text="${student.sname}"></td>
+        <td th:text="${student.spassword}"></td>
+        <td th:text="${student.ssex}"></td>
+        <td th:text="${student.sgradeId}"></td>
+        <td th:text="${student.sdeptId}"></td>
+        <td th:text="${student.sphone}"></td>
+        <td th:text="${student.semail}"></td>
+        <td>
+            &lt;!&ndash;<a href="/student/toUpdate.do?sid=${sid}">编辑</a>|&ndash;&gt;
+            &lt;!&ndash;'location.href="${path}/system/user/toUpdate.do?userId=${item.userId}"'&ndash;&gt;
+            <button type="编辑" onclick='location.href="/student/toUpdate.do?sid=${student.sid}"'>编辑</button>
+            <button title="删除" onclick="deleteById()">删除</button>
+            &lt;!&ndash;<a href="/student/delete">删除</a>&ndash;&gt;
+        </td>
+    </tr>
+</table>
+</div>
+</body>-->
+
+</html>
