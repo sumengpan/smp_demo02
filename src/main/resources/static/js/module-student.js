@@ -6,13 +6,14 @@ var vm = new Vue(
     {
         el:'#app', //让vu掌握指定的视图区域
         data:{
-            students:{
+            student:{
                 sid:'',
                 sname:'',
                 spassword:'',
                 ssex:'',
                 sgradeId:'',
                 sdeptId:'',
+                sjudgeId:'',
                 sphone:'',
                 semail:'',
             },
@@ -39,7 +40,7 @@ var vm = new Vue(
                 axios.get('/students/'+sid)
                     .then(function (response) {//正常
                         console.log(response.data);
-                        vm.user = response.data.data
+                        vm.student = response.data.data
                         vm.viewid = 3
                     })
                     .catch(function (err) {//请求失败
@@ -70,7 +71,7 @@ var vm = new Vue(
             },
             saveStudent:function () {
                 var vm = this
-                axios.post('/students',vm.students)
+                axios.post('/students',vm.student)
                     .then(function (response) {//正常
                         console.log(response.data);
                         vm.findAll()
@@ -82,7 +83,7 @@ var vm = new Vue(
             },
             updateStudent:function (sid) {
                 var vm = this
-                axios.put('/students/'+sid,vm.students)
+                axios.put('/students/'+sid,vm.student)
                     .then(function (response) {//正常
                         console.log(response.data);
                         vm.findAll()

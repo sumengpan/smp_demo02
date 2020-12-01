@@ -23,15 +23,15 @@ public class StudentDaoTest {
     @Test
     void test02(){
         Student student=new Student();
-        student.setSid(2017340107);
-        student.setSname("李四");
+        student.setSid(2017340109);
+        student.setSname("陈锦");
         student.setSpassword("123456");
         student.setSsex("男");
         student.setSage("22");
-        student.setSbirthday("19991111");
-        student.setSgradeId(2);
-        student.setSdeptId(2);
-        student.setSstate(1);
+        student.setSbirthday("19991105");
+        student.setSgradeId(3);
+        student.setSdeptId(1);
+        student.setSstate(0);
         student.setSjudgeId(3);
         dao.saveStudent(student);
     }

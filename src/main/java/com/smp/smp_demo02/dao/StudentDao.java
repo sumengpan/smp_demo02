@@ -29,7 +29,7 @@ public interface StudentDao {
     //修改
     @Update("update stu set sname= #{sname},spassword=#{spassword},ssex=#{ssex},sage= #{sage},\n" +
             "sbirthday=#{sbirthday},sgrade_id=#{sgradeId},sdept_id=#{sdeptId},\n" +
-            "sjudge_id=#{sjudgeId},sphone=#{sphone},semail=#{semail},sstate=#{sstate}where sid =#{sid}")
+            "sjudge_id=#{sjudgeId},sphone=#{sphone},semail=#{semail},sstate=#{sstate} where sid =#{sid}")
     void updateStudent(Student student);
 
     //删除
