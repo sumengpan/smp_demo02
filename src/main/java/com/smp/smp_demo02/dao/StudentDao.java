@@ -16,10 +16,10 @@ public interface StudentDao {
     List<Student> findAll();
 
     //增加学生
-    @Insert("insert into stu (sid,sname,spassword,ssex,sage,sbirthday,sgrade_id,\n" +
-            "sdept_id,sjudge_id,sphone,semail,sstate)\n" +
+    @Insert("insert into stu (sid,sname,spassword,ssex,sage,sbirthday,sgradeid,\n" +
+            "sdeptid,sjudgeid,sphone,semail,sstate)\n" +
             "values(#{sid},#{sname},#{spassword},#{ssex},#{sage},#{sbirthday},\n" +
-            "#{sgradeId},#{sdeptId },#{sjudgeId},#{sphone},#{semail},#{sstate})")
+            "#{sgradeid},#{sdeptid },#{sjudgeid},#{sphone},#{semail},#{sstate})")
     void saveStudent(Student student);
 
     //保存修改-->根据id
@@ -28,8 +28,8 @@ public interface StudentDao {
 
     //修改
     @Update("update stu set sname= #{sname},spassword=#{spassword},ssex=#{ssex},sage= #{sage},\n" +
-            "sbirthday=#{sbirthday},sgrade_id=#{sgradeId},sdept_id=#{sdeptId},\n" +
-            "sjudge_id=#{sjudgeId},sphone=#{sphone},semail=#{semail},sstate=#{sstate} where sid =#{sid}")
+            "sbirthday=#{sbirthday},sgradeid=#{sgradeid},sdeptid=#{sdeptid},\n" +
+            "sjudgeid=#{sjudgeid},sphone=#{sphone},semail=#{semail},sstate=#{sstate} where sid =#{sid}")
     void updateStudent(Student student);
 
     //删除

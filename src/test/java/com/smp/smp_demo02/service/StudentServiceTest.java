@@ -42,9 +42,9 @@ public class StudentServiceTest {
         student.setSsex("女");
         student.setSage("21");
         student.setSbirthday("1999-05-06");
-        student.setSgradeId(3);
-        student.setSdeptId(1);
-        student.setSjudgeId(1);
+        student.setSgradeid(3);
+        student.setSdeptid(1);
+        student.setSjudgeid(1);
         student.setSstate(1);
         service.saveStudent(student);
 

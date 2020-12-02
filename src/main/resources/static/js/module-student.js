@@ -11,9 +11,9 @@ var vm = new Vue(
                 sname:'',
                 spassword:'',
                 ssex:'',
-                sgradeId:'',
-                sdeptId:'',
-                sjudgeId:'',
+                sgradeid:'',
+                sdeptid:'',
+                sjudgeid:'',
                 sphone:'',
                 semail:'',
             },
@@ -52,7 +52,7 @@ var vm = new Vue(
                 axios.delete('/students/'+sid)
                     .then(function (response) {//正常
                         console.log(response.data);
-                        //vm.users = response.data.data
+                        //vm.students = response.data.data
                         //vm.viewid = 1
                         vm.findAll()
                     })

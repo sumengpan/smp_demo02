@@ -29,10 +29,10 @@ public class StudentDaoTest {
         student.setSsex("男");
         student.setSage("22");
         student.setSbirthday("19991105");
-        student.setSgradeId(3);
-        student.setSdeptId(1);
+        student.setSgradeid(3);
+        student.setSdeptid(1);
         student.setSstate(0);
-        student.setSjudgeId(3);
+        student.setSjudgeid(3);
         dao.saveStudent(student);
     }
 
