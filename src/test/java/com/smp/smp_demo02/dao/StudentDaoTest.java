@@ -23,36 +23,32 @@ public class StudentDaoTest {
     @Test
     void test02(){
         Student student=new Student();
-        student.setSid(2017340109);
-        student.setSname("陈锦");
+        student.setSid("2016340116");
+        student.setSname("李照辉");
         student.setSpassword("123456");
         student.setSsex("男");
-        student.setSage("22");
-        student.setSbirthday("19991105");
-        student.setSgradeid(3);
-        student.setSdeptid(1);
-        student.setSstate(0);
-        student.setSjudgeid(3);
+
         dao.saveStudent(student);
     }
 
-    //更新业务  先根据id查找出对应的一条记录，编辑它的值，再将记录保存到数据库中
+   //更新业务  先根据id查找出对应的一条记录，编辑它的值，再将记录保存到数据库中
     @Test
     public void test03() {
-        int sid = 2017340120;
+        String sid = "2016340116";
         Student student=dao.findBySid(sid);
         //修改
-        student.setSbirthday("1998-11-11");
+        student.setSpostatus("共青团员");
         //保存
         dao.updateStudent(student);
 
     }
-    //删除业务，就是根据指定的id，删除数据库中的记录
+     //删除业务，就是根据指定的id，删除数据库中的记录
     @Test
     public void test04() {
-        int sid = 000;
+        String sid = "1";
         //删除
         dao.deleteStudent(sid);
     }
+
 
 }

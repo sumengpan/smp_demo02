@@ -21,43 +21,30 @@ public class StudentServiceTest {
     StudentService service;
     @Test
     public void test01() {
-        //分页列表
-        //页面上显示分页列表，就要求业务方法中提供查询PageInfo的方法
-        //String sgradeId = "3";
-
-        PageHelper.startPage(1,3);
         List<Student> list=service.findAll();
-        PageInfo<Student> pi=new PageInfo<>(list);
-
-        l.info("pi = " + pi);
+        System.out.println(list);
     }
     @Test
     public void test02() {
         //
         //将一个表单数据保存在javaBean中，再将javaBean存到数据库
         Student student = new Student();
-        student.setSid(2017340102);
-        student.setSname("刘依婷");
+        student.setSid("2017340103");
+        student.setSname("张三");
         student.setSpassword("123456");
-        student.setSsex("女");
-        student.setSage("21");
-        student.setSbirthday("1999-05-06");
-        student.setSgradeid(3);
-        student.setSdeptid(1);
-        student.setSjudgeid(1);
-        student.setSstate(1);
+        student.setSsex("男");
         service.saveStudent(student);
 
     }
-    @Test
+   @Test
     public void test03() {
         //
         //更新业务  先根据id查找出对应的一条记录，编辑它的值，再将记录保存到数据库中
-        int sid = 2017340101;
+        String sid = "2017340101";
         Student student = service.findStudentById(sid);
         l.info("student=" + student);
         //修改
-        student.setSbirthday("1999-03-02");
+        student.setSpostatus("中共党员");
         //保存
         service.updateStudent(student);
 
@@ -66,15 +53,9 @@ public class StudentServiceTest {
     public void test04() {
         //
         //删除业务，就是根据指定的id，删除数据库中的记录
-        int sid = Integer.parseInt("2");
+        String sid ="1";
         //删除
         service.deleteStudent(sid);
 
-    }
-    @Test
-    public void test05(){
-        int sid = 1;
-        List<Student> list = service.findAll();
-        l.info("list = " + list);
     }
 }

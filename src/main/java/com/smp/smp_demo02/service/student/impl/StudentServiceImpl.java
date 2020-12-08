@@ -21,9 +21,16 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAll() {
         return studentDao.findAll();
     }
+
+
+    @Override
+    public Student stulogin(Student student) {
+        return studentDao.stulogin(student);
+    }
+
     //查找修改
     @Override
-    public Student findStudentById(int sid) {
+    public Student findStudentById(String sid) {
         return studentDao.findBySid(sid);
     }
     //添加
@@ -38,7 +45,7 @@ public class StudentServiceImpl implements StudentService {
     }
     //删除
     @Override
-    public void deleteStudent(int sid) {
+    public void deleteStudent(String sid) {
         studentDao.deleteStudent(sid);
     }
 
