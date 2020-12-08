@@ -1,6 +1,6 @@
 package com.smp.smp_demo02.dao;
 
-import com.smp.smp_demo02.domain.Student;
+import com.smp.smp_demo02.domain.Teacher;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -12,32 +12,31 @@ import java.util.List;
 @Component("TeacherDao")
 public interface TeacherDao {
     //全查
-    @Select("select * from student")
-    List<Student> findAll();
+    @Select("select * from teacher")
+    List<Teacher> findAll();
 
-    //增加学生
-    @Insert("insert into student (sid,sname,spassword,sidcard,ssex,sbirthday,spostatus," +
-            "snative,sfolk,shealth,scid,sgid,sdid,sadmissiond,sadmissionm,sstudyway," +
-            "saddress,sphone,semail,spower,sstate)\n" +
-            "values(#{sid},#{sname},#{spassword},#{sidcard},#{ssex},#{sbirthday},#{spostatus}," +
-            "#{snative},#{sfolk},#{shealth},#{scid},#{sgid},#{sdid},#{sadmissiond}," +
-            "#{sadmissionm},#{sstudyway},#{saddress},#{sphone},#{semail},#{spower},#{sstate})")
-    void saveStudent(Student student);
+    //增加
+    @Insert("insert into teacher (tid,tpassword,tname,tsex,tbirthday,tpostatus," +
+            "tnative,tfolk,tidcard,tpst,tdid,tphone,temail,tpower,tstate)\n" +
+            "values (#{tid},#{tpassword},#{tname},#{tsex},#{tbirthday},#{tpostatus},#{tnative}," +
+            "#{tfolk},#{tidcard},#{tpst},#{tdid},#{tphone},#{temail},#{tpower},#{tstate})")
+    void saveTeacher(Teacher teacher);
 
     //保存修改-->根据id
-    @Select("select * from student where sid=#{sid}")
-    Student findBySid(String sid);
+    @Select("select * from teacher where tid=#{tid}")
+        Teacher findByTid(String tid);
 
     //修改
-    @Update("update student set sname=#{sname},spassword=#{spassword},sidcard=#{sidcard}," +
-            "ssex=#{ssex},sbirthday=#{sbirthday},spostatus=#{spostatus},snative=#{snative}," +
-            "sfolk=#{sfolk},shealth=#{shealth},scid=#{scid},sgid=#{sgid},sdid=#{sdid}," +
-            "sadmissiond=#{sadmissiond},sadmissionm=#{sadmissionm},sstudyway=#{sstudyway}," +
-            "saddress=#{saddress},sphone=#{sphone},semail=#{semail},spower=#{spower}," +
-            "sstate=#{sstate} where sid =#{sid}")
-    void updateStudent(Student student);
+    @Update("update teacher set tpassword=#{tpassword},tname=#{tname},tsex=#{tsex}," +
+            "tbirthday=#{tbirthday},tpostatus=#{tpostatus},tnative=#{tnative},tfolk=#{tfolk}," +
+            "tidcard=#{tidcard},tpst=#{tpst},tdid=#{tdid},tphone=#{tphone},temail=#{temail}," +
+            "tpower=#{tpower},tstate=#{tstate} where tid=#{tid}")
+    void updateTeacher(Teacher teacher);
 
     //删除
-    @Delete("delete from student where sid=#{sid}")
-    void deleteStudent(String sid);
+    @Delete("delete from teacher where tid=#{tid}")
+    void deleteTeacher(String tid);
+    //登录查找
+    @Select("select * from teacher where tid=#{tid}")
+    Teacher tealogin(Teacher teacher);
 }

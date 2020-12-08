@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>教师管理</title>
+    <script src="js/vuejs-2.5.16.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
 </head>
 <body>
-hello
+<div id="app">
+    <div v-if="viewid==1">
+        <button @click="showSaveForm()">新建</button>
+        <table border="1px" width="100%">
+            <tr>
+                <td>序号</td>
+                <td>教师号</td>
+                <td>密码</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>所属学院</td>
+                <td>电话</td>
+                <td>邮箱</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="(teacher,index) in teachers">
+                <td>{{index+1}}</td>
+                <td>{{teacher.tid}}</td>
+                <td>{{teacher.tpassword}}</td>
+                <td>{{teacher.tname}}</td>
+                <td>{{teacher.tsex}}</td>
+                <td>{{teacher.tdid}}</td>
+                <td>{{teacher.tphone}}</td>
+                <td>{{teacher.temail}}</td>
+                <td>
+                    <button @click="deleteTeacher(teacher.tid)">删除</button>
+                    <button @click="findOne(teacher.tid)">编辑</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div v-if="viewid!=1">
+        <form>
+            <input type="hidden">
+            教师号:<input type="text" v-model="teacher.tid"><br/>
+            密码:<input type="text" v-model="teacher.tpassword"><br/>
+            姓名:<input type="text" v-model="teacher.tname"><br/>
+            性别:<input type="text" v-model="teacher.tsex"><br/>
+            电话:<input type="text" v-model="teacher.tphone"><br/>
+            邮箱:<input type="text" v-model="teacher.temail"><br/>
+            <button @click="back">返回</button>
+            <button v-if="viewid == 2" @click="saveTeacher()">保存</button>
+            <button v-if="viewid == 3" @click="updaTeteacher(teacher.tid)">修改</button>
+        </form>
+    </div>
+</div>
 </body>
+<script src="js/module-teacher.js"></script>
 </html>
